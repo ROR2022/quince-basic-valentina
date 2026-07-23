@@ -1,0 +1,180 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* ===========================================================
+   PALETA BOSQUE ENCANTADO
+   El rosa está reservado exclusivamente para la quinceañera.
+   =========================================================== */
+@theme inline {
+  /* Fuentes */
+  --font-sans: var(--font-montserrat), system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-display: var(--font-cinzel), Georgia, serif;
+  --font-script: var(--font-great-vibes), cursive;
+
+  /* Colores de marca del bosque */
+  --color-forest: var(--forest);
+  --color-forest-deep: var(--forest-deep);
+  --color-sage: var(--sage);
+  --color-moss: var(--moss);
+  --color-lavender: var(--lavender);
+  --color-lilac: var(--lilac);
+  --color-ivory: var(--ivory);
+  --color-champagne: var(--champagne);
+  --color-gold-light: var(--gold-light);
+  --color-gold: var(--gold);
+  --color-wood: var(--wood);
+  --color-night: var(--night);
+
+  /* Rosa exclusivo de la quinceañera */
+  --color-quince-pink: var(--quince-pink);
+  --color-quince-rose: var(--quince-rose);
+  --color-quince-glow: var(--quince-glow);
+
+  /* Tokens semánticos */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  color-scheme: dark;
+
+  /* Paleta bosque */
+  --forest: #16382c;
+  --forest-deep: #0f281f;
+  --sage: #9caf88;
+  --moss: #657a55;
+  --lavender: #c8b9db;
+  --lilac: #a99bbe;
+  --ivory: #fff9ed;
+  --champagne: #e8d7b5;
+  --gold-light: #e8cf8b;
+  --gold: #c89b3c;
+  --wood: #5a4032;
+  --night: #182638;
+
+  /* Rosa exclusivo de la quinceañera */
+  --quince-pink: #f6c5d5;
+  --quince-rose: #dfa6b8;
+  --quince-glow: #f8dce6;
+
+  --radius: 0.75rem;
+
+  /* Tokens semánticos mapeados a la paleta */
+  --background: #10241c;
+  --foreground: #fff9ed;
+  --card: rgba(22, 56, 44, 0.55);
+  --card-foreground: #fff9ed;
+  --popover: #16382c;
+  --popover-foreground: #fff9ed;
+  --primary: #c89b3c;
+  --primary-foreground: #10241c;
+  --secondary: #657a55;
+  --secondary-foreground: #fff9ed;
+  --muted: #1c4033;
+  --muted-foreground: #c8b9db;
+  --accent: #c8b9db;
+  --accent-foreground: #182638;
+  --destructive: #b4453a;
+  --border: rgba(232, 207, 139, 0.25);
+  --input: rgba(255, 249, 237, 0.15);
+  --ring: #c89b3c;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  /* Respetar preferencia de movimiento reducido */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+/* Utilidades de fuente */
+.font-display {
+  font-family: var(--font-display);
+}
+.font-script {
+  font-family: var(--font-script);
+}
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Resplandor rosa exclusivo de la quinceañera */
+.quince-glow {
+  box-shadow:
+    0 0 40px 8px rgba(246, 197, 213, 0.55),
+    0 0 90px 24px rgba(223, 166, 184, 0.3);
+}
+
+/* Texto con brillo dorado / rosa para el nombre */
+.name-shimmer {
+  background: linear-gradient(
+    100deg,
+    var(--quince-glow) 0%,
+    var(--gold-light) 35%,
+    var(--quince-pink) 65%,
+    var(--gold) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Efecto de niebla animada */
+@keyframes drift {
+  0% {
+    transform: translateX(-5%);
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(5%);
+    opacity: 0.4;
+  }
+}
