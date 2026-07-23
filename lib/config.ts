@@ -15,7 +15,7 @@ export const invitationConfig = {
   quinceanera: {
     name: 'Valentina', // Nombre completo mostrado
     shortName: 'Valentina',
-    photo: '/quinceanera.png', // Foto principal (colócala en /public)
+    photo: '/vale01.jpeg', // Foto principal (colócala en /public)
     phrase:
       'Hay momentos en la vida que imaginamos, soñamos y esperamos. Hoy quiero compartir contigo el comienzo de una nueva etapa.',
   },

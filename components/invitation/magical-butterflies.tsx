@@ -3,7 +3,7 @@
 /**
  * MagicalButterflies
  * Mariposas luminosas que flotan por la pantalla.
- * Colores: lavanda, dorado y salvia (nunca rosa salvo cerca de la quinceañera).
+ * Colores: lavanda, dorado, salvia y un acento de rosa pastel.
  */
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
@@ -13,7 +13,7 @@ interface MagicalButterfliesProps {
   className?: string
 }
 
-const WING_COLORS = ['#c8b9db', '#e8cf8b', '#9caf88', '#a99bbe']
+const WING_COLORS = ['#c8b9db', '#e8cf8b', '#9caf88', '#f6c5d5', '#dfa6b8']
 
 function Butterfly({ color, size }: { color: string; size: number }) {
   return (

@@ -2,17 +2,19 @@
 
 /**
  * EnvelopeRain
- * Sobres decorativos que descienden suavemente (sin rosa).
+ * Sobres decorativos que descienden suavemente. Sello en salvia o rosa pastel.
  */
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
-function EnvelopeIcon({ size }: { size: number }) {
+const SEAL_COLORS = ['#9caf88', '#dfa6b8']
+
+function EnvelopeIcon({ size, sealColor }: { size: number; sealColor: string }) {
   return (
     <svg width={size} height={size * 0.7} viewBox="0 0 40 28" fill="none" aria-hidden="true">
       <rect x="1" y="1" width="38" height="26" rx="2" fill="#fff9ed" stroke="#c89b3c" strokeWidth="1" />
       <path d="M1 3 L20 16 L39 3" fill="none" stroke="#c89b3c" strokeWidth="1" />
-      <circle cx="20" cy="17" r="3" fill="#9caf88" />
+      <circle cx="20" cy="17" r="3" fill={sealColor} />
     </svg>
   )
 }
@@ -24,7 +26,15 @@ interface EnvelopeRainProps {
 
 export function EnvelopeRain({ count = 10, className = '' }: EnvelopeRainProps) {
   const [envelopes, setEnvelopes] = useState<
-    Array<{ id: number; left: number; size: number; duration: number; delay: number; sway: number }>
+    Array<{
+      id: number
+      left: number
+      size: number
+      duration: number
+      delay: number
+      sway: number
+      sealColor: string
+    }>
   >([])
 
   useEffect(() => {
@@ -36,6 +46,7 @@ export function EnvelopeRain({ count = 10, className = '' }: EnvelopeRainProps) 
         duration: 8 + Math.random() * 7,
         delay: Math.random() * 8,
         sway: 15 + Math.random() * 25,
+        sealColor: SEAL_COLORS[Math.floor(Math.random() * SEAL_COLORS.length)],
       })),
     )
   }, [count])
@@ -48,11 +59,11 @@ export function EnvelopeRain({ count = 10, className = '' }: EnvelopeRainProps) 
       {envelopes.map((e) => (
         <motion.div
           key={e.id}
-          className="absolute -top-10"
+          className="absolute"
           style={{ left: `${e.left}%` }}
-          initial={{ y: -40, opacity: 0, rotate: -8 }}
+          initial={{ top: '-10%', opacity: 0, rotate: -8 }}
           animate={{
-            y: ['-10%', '120%'],
+            top: ['-10%', '120%'],
             x: [0, e.sway, -e.sway, 0],
             opacity: [0, 0.9, 0.9, 0],
             rotate: [-8, 8, -6, 6],
@@ -64,7 +75,7 @@ export function EnvelopeRain({ count = 10, className = '' }: EnvelopeRainProps) 
             ease: 'easeInOut',
           }}
         >
-          <EnvelopeIcon size={e.size} />
+          <EnvelopeIcon size={e.size} sealColor={e.sealColor} />
         </motion.div>
       ))}
     </div>

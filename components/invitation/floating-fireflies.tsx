@@ -2,7 +2,7 @@
 
 /**
  * FloatingFireflies
- * Luciérnagas doradas que flotan con movimientos aleatorios.
+ * Luciérnagas doradas (con un acento rosa pastel) que flotan con movimientos aleatorios.
  */
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
@@ -11,6 +11,11 @@ interface FloatingFirefliesProps {
   count?: number
   className?: string
 }
+
+const TONES = [
+  { className: 'bg-gold-light', glow: 'rgba(232, 207, 139, 0.8)' },
+  { className: 'bg-quince-pink', glow: 'rgba(246, 197, 213, 0.85)' },
+] as const
 
 export function FloatingFireflies({
   count = 18,
@@ -25,6 +30,7 @@ export function FloatingFireflies({
       duration: number
       delay: number
       drift: number
+      tone: (typeof TONES)[number]
     }>
   >([])
 
@@ -38,6 +44,7 @@ export function FloatingFireflies({
         duration: 6 + Math.random() * 8,
         delay: Math.random() * 6,
         drift: 20 + Math.random() * 60,
+        tone: TONES[Math.floor(Math.random() * TONES.length)],
       })),
     )
   }, [count])
@@ -50,13 +57,13 @@ export function FloatingFireflies({
       {fireflies.map((f) => (
         <motion.span
           key={f.id}
-          className="absolute rounded-full bg-gold-light"
+          className={`absolute rounded-full ${f.tone.className}`}
           style={{
             left: `${f.left}%`,
             top: `${f.top}%`,
             width: f.size,
             height: f.size,
-            boxShadow: '0 0 8px 2px rgba(232, 207, 139, 0.8)',
+            boxShadow: `0 0 8px 2px ${f.tone.glow}`,
           }}
           animate={{
             x: [0, f.drift, -f.drift / 2, 0],

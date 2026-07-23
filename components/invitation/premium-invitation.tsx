@@ -7,6 +7,7 @@
  */
 import { motion } from 'framer-motion'
 import { invitationConfig } from '@/lib/config'
+import { MagicalButterflies } from './magical-butterflies'
 import { SectionReveal } from './section-reveal'
 
 /** Corona / tiara original en SVG. */
@@ -52,6 +53,7 @@ export function PremiumInvitation() {
 
   return (
     <SectionReveal className="relative px-6 py-20">
+      <MagicalButterflies count={3} />
       <motion.article
         initial={{ opacity: 0, rotateX: -12, y: 40 }}
         whileInView={{ opacity: 1, rotateX: 0, y: 0 }}

@@ -6,6 +6,7 @@
  */
 import { Moon } from 'lucide-react'
 import { invitationConfig } from '@/lib/config'
+import { FloatingBlossoms } from './floating-blossoms'
 import { SectionReveal } from './section-reveal'
 
 const MONTHS = [
@@ -20,6 +21,7 @@ export function Footer() {
 
   return (
     <SectionReveal as="div" className="relative px-6 pb-16 pt-10 text-center">
+      <FloatingBlossoms count={5} />
       <div className="mx-auto flex max-w-xl flex-col items-center gap-4">
         {/* Corona / luna decorativa */}
         <div className="flex items-center gap-2 text-gold-light">
@@ -36,14 +38,14 @@ export function Footer() {
           {quinceanera.name} y familia
         </p>
 
-        <p className="text-sm text-lavender">{familyMessage}</p>
+        <p className="text-sm text-quince-rose">{familyMessage}</p>
 
         <p className="mt-2 text-xs uppercase tracking-[0.25em] text-champagne/70">
           {dateLabel}
         </p>
 
         <p className="mt-6 text-[11px] text-sage/70">
-          Invitación digital creada con cariño · v0
+          Invitación digital creada con cariño 💝
         </p>
       </div>
     </SectionReveal>

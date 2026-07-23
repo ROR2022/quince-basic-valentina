@@ -7,6 +7,7 @@
  */
 import { Sparkles } from 'lucide-react'
 import { guestColorPalette, invitationConfig } from '@/lib/config'
+import { MagicalButterflies } from './magical-butterflies'
 import { SectionReveal } from './section-reveal'
 
 export function DressCode() {
@@ -14,6 +15,7 @@ export function DressCode() {
 
   return (
     <SectionReveal className="relative px-6 py-20">
+      <MagicalButterflies count={3} />
       <div className="mx-auto max-w-3xl text-center">
         <h2 className="font-display text-2xl uppercase tracking-[0.2em] text-gold-light sm:text-3xl">
           Código de vestimenta
@@ -36,7 +38,7 @@ export function DressCode() {
         </div>
 
         {/* Paleta sugerida para invitados */}
-        <p className="mt-12 text-sm uppercase tracking-[0.2em] text-lavender">
+        <p className="mt-12 text-sm uppercase tracking-[0.2em] text-quince-rose">
           Colores sugeridos para invitados
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-4">

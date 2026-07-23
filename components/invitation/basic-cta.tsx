@@ -9,6 +9,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Check, MessageCircle, Sparkles, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { invitationConfig } from '@/lib/config'
+import { MagicalButterflies } from './magical-butterflies'
 import { SectionReveal } from './section-reveal'
 
 const FEATURES = [
@@ -50,13 +51,14 @@ export function BasicCTA() {
 
   return (
     <SectionReveal className="relative px-6 py-20">
+      <MagicalButterflies count={3} />
       <div className="mx-auto max-w-md text-center">
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="inline-flex items-center gap-2 rounded-full border border-lavender/30 bg-night/50 px-6 py-3 font-display text-sm uppercase tracking-[0.15em] text-ivory backdrop-blur-md transition-transform hover:scale-105"
+          className="inline-flex items-center gap-2 rounded-full border border-quince-rose/50 bg-night/50 px-6 py-3 font-display text-sm uppercase tracking-[0.15em] text-ivory backdrop-blur-md transition-transform hover:scale-105"
         >
-          <Sparkles className="h-4 w-4 text-lavender" aria-hidden="true" />
+          <Sparkles className="h-4 w-4 text-quince-pink" aria-hidden="true" />
           ¿Te gustaría una invitación como esta?
         </button>
       </div>
@@ -78,6 +80,7 @@ export function BasicCTA() {
               transition={{ duration: 0.25 }}
               onClick={(e) => e.stopPropagation()}
             >
+              <MagicalButterflies count={3} />
               <button
                 type="button"
                 onClick={() => setOpen(false)}
@@ -87,7 +90,7 @@ export function BasicCTA() {
                 <X className="h-5 w-5" />
               </button>
 
-              <Sparkles className="mx-auto h-7 w-7 text-lavender" aria-hidden="true" />
+              <Sparkles className="mx-auto h-7 w-7 text-quince-pink" aria-hidden="true" />
               <h2 className="mt-4 font-display text-2xl uppercase tracking-[0.15em] text-ivory sm:text-3xl">
                 ¿Te gustaría una invitación como esta?
               </h2>
@@ -119,7 +122,7 @@ export function BasicCTA() {
                   href={waLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-sage/60 px-6 py-3 font-display text-sm uppercase tracking-[0.15em] text-sage transition-colors hover:bg-sage/10"
+                  className="inline-flex items-center gap-2 rounded-full border border-quince-rose/60 px-6 py-3 font-display text-sm uppercase tracking-[0.15em] text-quince-rose transition-colors hover:bg-quince-pink/10"
                 >
                   <MessageCircle className="h-4 w-4" aria-hidden="true" />
                   Contactar por WhatsApp

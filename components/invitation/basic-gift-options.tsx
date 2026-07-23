@@ -3,7 +3,7 @@
 /**
  * BasicGiftOptions
  * Única modalidad de regalo: "Lluvia de sobres".
- * Sin datos bancarios, sin mesa de regalos. Sin rosa en esta sección.
+ * Sin datos bancarios, sin mesa de regalos. Acento de rosa pastel en el sello y los sobres.
  */
 import { motion } from 'framer-motion'
 import { Heart, Star } from 'lucide-react'
@@ -24,7 +24,7 @@ function DecorativeEnvelope() {
       <div
         className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full"
         style={{
-          background: 'radial-gradient(circle at 35% 30%, #7a8f66, #4a5c3d)',
+          background: 'radial-gradient(circle at 35% 30%, #dfa6b8, #b97a8d)',
           boxShadow: '0 4px 10px rgba(0,0,0,0.4)',
         }}
       >
@@ -65,7 +65,7 @@ export function BasicGiftOptions() {
             <p className="mx-auto mt-8 max-w-md text-pretty font-serif text-lg leading-relaxed text-champagne/95">
               {gifts.message}
             </p>
-            <p className="mx-auto mt-4 max-w-md text-pretty font-serif text-base leading-relaxed text-lavender">
+            <p className="mx-auto mt-4 max-w-md text-pretty font-serif text-base leading-relaxed text-quince-rose">
               {gifts.instructions}
             </p>
           </div>

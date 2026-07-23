@@ -3,10 +3,11 @@
 /**
  * BasicCountdown
  * Cuenta regresiva (días, horas, minutos, segundos) hasta la fecha del evento.
- * Tarjetas glassmorphism en verde bosque, marfil, lavanda y dorado (sin rosa).
+ * Tarjetas glassmorphism con acento de rosa pastel.
  */
 import { useEffect, useState } from 'react'
 import { invitationConfig } from '@/lib/config'
+import { FloatingBlossoms } from './floating-blossoms'
 import { SectionReveal } from './section-reveal'
 
 function getRemaining(target: number) {
@@ -40,8 +41,9 @@ export function BasicCountdown() {
 
   return (
     <SectionReveal className="relative px-6 py-20">
+      <FloatingBlossoms count={6} />
       <div className="mx-auto max-w-3xl text-center">
-        <h2 className="font-display text-2xl uppercase tracking-[0.2em] text-gold-light sm:text-3xl">
+        <h2 className="font-display text-2xl uppercase tracking-[0.2em] text-quince-rose sm:text-3xl">
           Cuenta regresiva
         </h2>
         <p className="mt-3 font-serif text-lg text-champagne/90">
@@ -52,13 +54,13 @@ export function BasicCountdown() {
           {(['days', 'hours', 'minutes', 'seconds'] as const).map((unit) => (
             <div
               key={unit}
-              className="rounded-2xl border border-gold/25 bg-forest/40 px-4 py-6 backdrop-blur-md"
-              style={{ boxShadow: 'inset 0 1px 0 rgba(255,249,237,0.08)' }}
+              className="rounded-2xl border border-quince-rose/40 bg-quince-pink/10 px-4 py-6 backdrop-blur-md"
+              style={{ boxShadow: 'inset 0 1px 0 rgba(255,249,237,0.08), 0 0 24px 2px rgba(246,197,213,0.15)' }}
             >
               <div className="font-display text-4xl text-ivory tabular-nums sm:text-5xl">
                 {String(time[unit]).padStart(2, '0')}
               </div>
-              <div className="mt-2 text-xs uppercase tracking-[0.2em] text-lavender">
+              <div className="mt-2 text-xs uppercase tracking-[0.2em] text-quince-rose">
                 {LABELS[unit]}
               </div>
             </div>

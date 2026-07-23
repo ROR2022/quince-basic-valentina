@@ -68,6 +68,15 @@ export function EnchantedBackground() {
         }}
       />
 
+      {/* Acento de rosa pastel, bien visible, en la esquina opuesta */}
+      <div
+        className="absolute inset-0 opacity-70"
+        style={{
+          background:
+            'radial-gradient(ellipse 65% 50% at 80% 15%, rgba(246,197,213,0.32), transparent 72%)',
+        }}
+      />
+
       {/* Luna creciente */}
       <div className="absolute right-[12%] top-[8%]">
         <div
