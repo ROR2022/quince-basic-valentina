@@ -67,6 +67,7 @@ export function BasicAttendance() {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
+    timeZone: 'UTC',
   })
 
   const [form, setForm] = useState<RSVPData>({
@@ -231,7 +232,7 @@ export function BasicAttendance() {
                   />
                 </div>
 
-                <div>
+                <div className="hidden">
                   <label htmlFor="rsvp-dietary" className="mb-1 block text-sm text-quince-rose">
                     Restricciones alimenticias (opcional)
                   </label>

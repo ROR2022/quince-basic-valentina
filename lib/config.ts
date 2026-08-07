@@ -76,8 +76,6 @@ export const guestColorPalette = [
   { name: 'Lavanda', hex: '#c8b9db' },
   { name: 'Lila', hex: '#a99bbe' },
   { name: 'Champagne', hex: '#e8d7b5' },
-  { name: 'Dorado', hex: '#c89b3c' },
-  { name: 'Plateado', hex: '#c4c8cc' },
   { name: 'Beige', hex: '#d9cbb2' },
   { name: 'Negro', hex: '#1a1a1a' },
 ] as const
