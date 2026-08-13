@@ -33,7 +33,7 @@ export const invitationConfig = {
   },
   godparents:{
     godmother: 'Lic. Sally Vianney Ilacedo Alvarez',
-    godfather: 'Lic. Javier Pérez Torres',
+    godfather: 'Mtro. Javier Pérez Torres',
   },
   ceremony: {
     name: 'Parroquia de Santa Clara',
