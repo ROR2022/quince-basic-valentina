@@ -1,4 +1,4 @@
-# Plan de implementación: paleta rosa para la invitación
+# Plan de implementación: paleta rosa para la invitación (testing something)
 
 ## 1. Objetivo y alcance
 
