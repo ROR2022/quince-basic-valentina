@@ -56,9 +56,9 @@ export function BasicCTA() {
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="inline-flex items-center gap-2 rounded-full border border-quince-rose/50 bg-night/50 px-6 py-3 font-display text-sm uppercase tracking-[0.15em] text-ivory backdrop-blur-md transition-transform hover:scale-105"
+          className="inline-flex items-center gap-2 rounded-full border border-rose-dark/50 bg-rose-petal/90 px-6 py-3 font-display text-sm uppercase tracking-[0.15em] text-rose-ink shadow-md transition-transform hover:scale-105"
         >
-          <Sparkles className="h-4 w-4 text-quince-pink" aria-hidden="true" />
+          <Sparkles className="h-4 w-4 text-rose-dark" aria-hidden="true" />
           ¿Te gustaría una invitación como esta?
         </button>
       </div>
@@ -66,14 +66,14 @@ export function BasicCTA() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-70 flex items-center justify-center bg-night/80 p-6 backdrop-blur-sm"
+            className="fixed inset-0 z-70 flex items-center justify-center bg-rose-ink/45 p-6 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setOpen(false)}
           >
             <motion.div
-              className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-lavender/30 bg-night/95 p-8 text-center backdrop-blur-md sm:p-12"
+              className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-rose-vintage/70 bg-rose-baby p-8 text-center text-rose-ink shadow-2xl sm:p-12"
               initial={{ opacity: 0, scale: 0.95, y: 12 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 12 }}
@@ -85,24 +85,24 @@ export function BasicCTA() {
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Cerrar"
-                className="absolute right-4 top-4 rounded-full p-2 text-champagne/70 transition-colors hover:bg-forest/40 hover:text-ivory"
+                className="absolute right-4 top-4 rounded-full p-2 text-rose-bordeaux transition-colors hover:bg-rose-blush/50 hover:text-rose-ink"
               >
                 <X className="h-5 w-5" />
               </button>
 
-              <Sparkles className="mx-auto h-7 w-7 text-quince-pink" aria-hidden="true" />
-              <h2 className="mt-4 font-display text-2xl uppercase tracking-[0.15em] text-ivory sm:text-3xl">
+              <Sparkles className="mx-auto h-7 w-7 text-rose-dark" aria-hidden="true" />
+              <h2 className="mt-4 font-display text-2xl uppercase tracking-[0.15em] text-rose-ink sm:text-3xl">
                 ¿Te gustaría una invitación como esta?
               </h2>
-              <p className="mx-auto mt-4 max-w-md text-pretty font-serif text-lg leading-relaxed text-champagne/90">
+              <p className="mx-auto mt-4 max-w-md text-pretty font-serif text-lg leading-relaxed text-rose-bordeaux">
                 Creamos invitaciones digitales personalizadas para XV años, bodas, baby
                 showers y eventos especiales.
               </p>
 
               <ul className="mx-auto mt-8 grid max-w-lg grid-cols-1 gap-3 text-left sm:grid-cols-2">
                 {FEATURES.map((feature) => (
-                  <li key={feature} className="flex items-center gap-2 text-sm text-champagne/90">
-                    <Check className="h-4 w-4 shrink-0 text-sage" aria-hidden="true" />
+                  <li key={feature} className="flex items-center gap-2 text-sm text-rose-bordeaux">
+                    <Check className="h-4 w-4 shrink-0 text-rose-dark" aria-hidden="true" />
                     {feature}
                   </li>
                 ))}
@@ -113,7 +113,7 @@ export function BasicCTA() {
                   href={waLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 font-display text-sm uppercase tracking-[0.15em] text-forest-deep transition-transform hover:scale-105"
+                  className="inline-flex items-center gap-2 rounded-full bg-rose-dark px-6 py-3 font-display text-sm uppercase tracking-[0.15em] text-cream transition-transform hover:scale-105 hover:bg-rose-bordeaux"
                 >
                   <Sparkles className="h-4 w-4" aria-hidden="true" />
                   Cotizar mi invitación
@@ -122,7 +122,7 @@ export function BasicCTA() {
                   href={waLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-quince-rose/60 px-6 py-3 font-display text-sm uppercase tracking-[0.15em] text-quince-rose transition-colors hover:bg-quince-pink/10"
+                  className="inline-flex items-center gap-2 rounded-full border border-rose-dark/60 px-6 py-3 font-display text-sm uppercase tracking-[0.15em] text-rose-bordeaux transition-colors hover:bg-rose-blush/30"
                 >
                   <MessageCircle className="h-4 w-4" aria-hidden="true" />
                   Contactar por WhatsApp

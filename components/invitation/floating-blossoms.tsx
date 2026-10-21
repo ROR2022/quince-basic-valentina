@@ -7,7 +7,7 @@
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
-const PETAL_COLORS = ['#f6c5d5', '#dfa6b8', '#f8dce6']
+const PETAL_COLORS = ['#f5b7cc', '#e89db5', '#fdecf3']
 
 function Blossom({ size, color }: { size: number; color: string }) {
   return (
@@ -24,7 +24,7 @@ function Blossom({ size, color }: { size: number; color: string }) {
           transform={`rotate(${angle} 12 12)`}
         />
       ))}
-      <circle cx={12} cy={12} r={2} fill="#e8cf8b" />
+      <circle cx={12} cy={12} r={2} fill="#d4af7a" />
     </svg>
   )
 }

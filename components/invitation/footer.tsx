@@ -24,27 +24,27 @@ export function Footer() {
       <FloatingBlossoms count={5} />
       <div className="mx-auto flex max-w-xl flex-col items-center gap-4">
         {/* Corona / luna decorativa */}
-        <div className="flex items-center gap-2 text-gold-light">
-          <span className="h-px w-10 bg-gold/50" />
+        <div className="flex items-center gap-2 text-rose-dark">
+          <span className="h-px w-10 bg-gold-soft/70" />
           <Moon className="h-5 w-5" aria-hidden="true" />
-          <span className="h-px w-10 bg-gold/50" />
+          <span className="h-px w-10 bg-gold-soft/70" />
         </div>
 
-        <p className="font-serif text-lg leading-relaxed text-champagne/90">
+        <p className="font-serif text-lg leading-relaxed text-rose-bordeaux">
           Gracias por ser parte de esta historia encantada.
         </p>
 
-        <p className="font-script text-4xl text-gold-light">
+        <p className="font-script text-4xl text-rose-dark">
           {quinceanera.name} y familia
         </p>
 
-        <p className="text-sm text-quince-rose">{familyMessage}</p>
+        <p className="text-sm text-rose-bordeaux">{familyMessage}</p>
 
-        <p className="mt-2 text-xs uppercase tracking-[0.25em] text-champagne/70">
+        <p className="mt-2 text-xs uppercase tracking-[0.25em] text-rose-bordeaux">
           {dateLabel}
         </p>
 
-        <p className="mt-6 text-[11px] text-sage/70">
+        <p className="mt-6 text-[11px] text-grape-gray">
           Invitación digital creada con cariño 💝
         </p>
       </div>

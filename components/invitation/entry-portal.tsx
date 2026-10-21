@@ -2,7 +2,7 @@
 
 /**
  * EntryPortal
- * Pantalla introductoria. Al pulsar el botón se abre un portal de ramas,
+ * Pantalla introductoria en tonos rosa. Al pulsar el botón se abre un portal de ramas,
  * hojas y partículas, y se revela la invitación. También activa la música.
  */
 import { AnimatePresence, motion } from 'framer-motion'
@@ -22,7 +22,7 @@ export function EntryPortal({ visible, onEnter }: EntryPortalProps) {
           className="fixed inset-0 z-[60] flex flex-col items-center justify-center overflow-hidden px-6 text-center"
           style={{
             background:
-              'radial-gradient(ellipse at center, #16382c 0%, #0f281f 60%, #0a1a13 100%)',
+              'radial-gradient(ellipse at center, var(--cream) 0%, var(--rose-petal) 60%, var(--rose-baby) 100%)',
           }}
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.15 }}
@@ -33,7 +33,7 @@ export function EntryPortal({ visible, onEnter }: EntryPortalProps) {
           {/* Arco de ramas decorativo */}
           <svg
             viewBox="0 0 400 200"
-            className="pointer-events-none absolute top-0 h-48 w-full max-w-2xl text-gold/50"
+            className="pointer-events-none absolute top-0 h-48 w-full max-w-2xl text-gold-soft/70"
             aria-hidden="true"
           >
             <path
@@ -57,8 +57,8 @@ export function EntryPortal({ visible, onEnter }: EntryPortalProps) {
             transition={{ delay: 0.3, duration: 1 }}
             className="relative z-10 flex flex-col items-center gap-6"
           >
-            <Sparkles className="h-8 w-8 text-gold-light" />
-            <p className="max-w-md font-serif text-2xl leading-relaxed text-champagne sm:text-3xl">
+            <Sparkles className="h-8 w-8 text-rose-dark" />
+            <p className="max-w-md font-serif text-2xl leading-relaxed text-rose-ink sm:text-3xl">
               Una noche mágica está por comenzar
             </p>
 
@@ -67,13 +67,13 @@ export function EntryPortal({ visible, onEnter }: EntryPortalProps) {
               onClick={onEnter}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.96 }}
-              className="group relative mt-2 overflow-hidden rounded-full border border-gold/70 bg-forest/60 px-8 py-4 font-display text-sm uppercase tracking-[0.2em] text-gold-light backdrop-blur-md transition-colors hover:bg-forest"
-              style={{ boxShadow: '0 0 30px 6px rgba(200,155,60,0.35)' }}
+              className="group relative mt-2 overflow-hidden rounded-full border border-rose-dark bg-rose-dark px-8 py-4 font-display text-sm uppercase tracking-[0.2em] text-cream shadow-lg transition-colors hover:bg-rose-bordeaux"
+              style={{ boxShadow: '0 0 30px 6px rgba(168,78,114,0.3)' }}
             >
-              Entrar al bosque encantado
+              Entrar a la invitación
             </motion.button>
 
-            <p className="mt-2 text-xs text-sage">
+            <p className="mt-2 text-xs text-rose-bordeaux">
               Al entrar se activará la música de fondo
             </p>
           </motion.div>

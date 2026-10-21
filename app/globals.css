@@ -4,8 +4,8 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ===========================================================
-   PALETA BOSQUE ENCANTADO
-   El rosa está reservado exclusivamente para la quinceañera.
+   PALETA ROSA ROMÁNTICA
+   El rosa se reserva para la quinceañera en el código de vestimenta.
    =========================================================== */
 @theme inline {
   /* Fuentes */
@@ -14,24 +14,24 @@
   --font-display: var(--font-cinzel), Georgia, serif;
   --font-script: var(--font-great-vibes), cursive;
 
-  /* Colores de marca del bosque */
-  --color-forest: var(--forest);
-  --color-forest-deep: var(--forest-deep);
-  --color-sage: var(--sage);
-  --color-moss: var(--moss);
-  --color-lavender: var(--lavender);
-  --color-lilac: var(--lilac);
-  --color-ivory: var(--ivory);
+  /* Paleta rosa, floral y neutra */
+  --color-rose-petal: var(--rose-petal);
+  --color-rose-blush: var(--rose-blush);
+  --color-rose-vintage: var(--rose-vintage);
+  --color-rose-deep: var(--rose-deep);
+  --color-rose-dark: var(--rose-dark);
+  --color-rose-baby: var(--rose-baby);
+  --color-rose-ink: var(--rose-ink);
+  --color-rose-bordeaux: var(--rose-bordeaux);
+  --color-rose-brown: var(--rose-brown);
+  --color-lilac-powder: var(--lilac-powder);
+  --color-lavender-soft: var(--lavender-soft);
+  --color-mauve: var(--mauve);
+  --color-cream: var(--cream);
+  --color-beige-nude: var(--beige-nude);
   --color-champagne: var(--champagne);
-  --color-gold-light: var(--gold-light);
-  --color-gold: var(--gold);
-  --color-wood: var(--wood);
-  --color-night: var(--night);
-
-  /* Rosa exclusivo de la quinceañera */
-  --color-quince-pink: var(--quince-pink);
-  --color-quince-rose: var(--quince-rose);
-  --color-quince-glow: var(--quince-glow);
+  --color-gold-soft: var(--gold-soft);
+  --color-grape-gray: var(--grape-gray);
 
   /* Tokens semánticos */
   --color-background: var(--background);
@@ -60,48 +60,54 @@
 }
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 
-  /* Paleta bosque */
-  --forest: #16382c;
-  --forest-deep: #0f281f;
-  --sage: #9caf88;
-  --moss: #657a55;
-  --lavender: #c8b9db;
-  --lilac: #a99bbe;
-  --ivory: #fff9ed;
-  --champagne: #e8d7b5;
-  --gold-light: #e8cf8b;
-  --gold: #c89b3c;
-  --wood: #5a4032;
-  --night: #182638;
+  --rose-petal: #f8d7e4;
+  --rose-blush: #f5b7cc;
+  --rose-vintage: #e89db5;
+  --rose-deep: #d67aa1;
+  --rose-dark: #a84e72;
+  --rose-baby: #fdecf3;
+  --rose-ink: #5e2e40;
+  --rose-bordeaux: #7a3c52;
+  --rose-brown: #6a4a4a;
 
-  /* Rosa exclusivo de la quinceañera */
-  --quince-pink: #f6c5d5;
-  --quince-rose: #dfa6b8;
-  --quince-glow: #f8dce6;
+  --lilac-powder: #eadaf5;
+  --lavender-soft: #d7c3e8;
+  --mauve: #b698c9;
+
+  --cream: #fff8f4;
+  --beige-nude: #f2e5dd;
+  --champagne: #e9d7b8;
+  --gold-soft: #d4af7a;
+  --grape-gray: #7f6779;
+
+  /* Tono reservado para la quinceañera y sus elementos exclusivos. */
+  --quince-pink: var(--rose-blush);
+  --quince-rose: var(--rose-dark);
+  --quince-glow: var(--rose-bordeaux);
 
   --radius: 0.75rem;
 
-  /* Tokens semánticos mapeados a la paleta */
-  --background: #10241c;
-  --foreground: #fff9ed;
-  --card: rgba(22, 56, 44, 0.55);
-  --card-foreground: #fff9ed;
-  --popover: #16382c;
-  --popover-foreground: #fff9ed;
-  --primary: #c89b3c;
-  --primary-foreground: #10241c;
-  --secondary: #657a55;
-  --secondary-foreground: #fff9ed;
-  --muted: #1c4033;
-  --muted-foreground: #c8b9db;
-  --accent: #c8b9db;
-  --accent-foreground: #182638;
-  --destructive: #b4453a;
-  --border: rgba(232, 207, 139, 0.25);
-  --input: rgba(255, 249, 237, 0.15);
-  --ring: #c89b3c;
+  /* Tokens semánticos mapeados a superficies claras y texto oscuro. */
+  --background: var(--cream);
+  --foreground: var(--rose-ink);
+  --card: rgba(255, 248, 244, 0.88);
+  --card-foreground: var(--rose-ink);
+  --popover: var(--rose-baby);
+  --popover-foreground: var(--rose-ink);
+  --primary: var(--rose-dark);
+  --primary-foreground: var(--cream);
+  --secondary: var(--lavender-soft);
+  --secondary-foreground: var(--rose-ink);
+  --muted: var(--rose-baby);
+  --muted-foreground: var(--rose-bordeaux);
+  --accent: var(--rose-blush);
+  --accent-foreground: var(--rose-ink);
+  --destructive: #a83245;
+  --border: #b96f88;
+  --input: #b96f88;
+  --ring: var(--rose-dark);
 }
 
 @layer base {
@@ -110,6 +116,16 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
+    background: linear-gradient(
+      180deg,
+      var(--rose-petal) 0%,
+      var(--cream) 45%,
+      var(--rose-baby) 100%
+    );
+  }
+  :focus-visible {
+    outline: 2px solid var(--rose-dark);
+    outline-offset: 3px;
   }
 
   /* Respetar preferencia de movimiento reducido */
@@ -135,21 +151,21 @@
   font-family: var(--font-serif);
 }
 
-/* Resplandor rosa exclusivo de la quinceañera */
+/* Resplandor rosa alrededor del retrato de la quinceañera. */
 .quince-glow {
   box-shadow:
-    0 0 40px 8px rgba(246, 197, 213, 0.55),
-    0 0 90px 24px rgba(223, 166, 184, 0.3);
+    0 0 40px 8px rgba(245, 183, 204, 0.55),
+    0 0 90px 24px rgba(214, 122, 161, 0.3);
 }
 
-/* Texto con brillo dorado / rosa para el nombre */
+/* Brillo rosa, lavanda y champagne para el nombre. */
 .name-shimmer {
   background: linear-gradient(
     100deg,
-    var(--quince-glow) 0%,
-    var(--gold-light) 35%,
-    var(--quince-pink) 65%,
-    var(--gold) 100%
+    var(--rose-bordeaux) 0%,
+    var(--rose-dark) 35%,
+    var(--rose-bordeaux) 65%,
+    var(--rose-ink) 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;

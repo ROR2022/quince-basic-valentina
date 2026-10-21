@@ -36,12 +36,12 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: 'Mis XV Años · Una Noche Mágica',
   description:
-    'Invitación digital para una noche mágica de XV años en un bosque encantado.',
+    'Invitación digital romántica para celebrar los XV años de Valentina.',
   generator: 'v0.app',
 }
 
 export const viewport: Viewport = {
-  themeColor: '#16382C',
+  themeColor: '#A84E72',
 }
 
 export default function RootLayout({

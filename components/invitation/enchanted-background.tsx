@@ -2,8 +2,8 @@
 
 /**
  * EnchantedBackground
- * Fondo global fijo: gradiente bosque→noche, siluetas de árboles,
- * niebla translúcida, luna creciente, estrellas y partículas doradas.
+ * Fondo global fijo en tonos rosa: gradientes, siluetas de árboles,
+ * niebla translúcida, luna creciente, estrellas y luciérnagas.
  * Permanece durante el scroll sin afectar la legibilidad.
  */
 import { motion } from 'framer-motion'
@@ -50,21 +50,21 @@ export function EnchantedBackground() {
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
-      {/* Gradiente base: verde bosque → azul nocturno */}
+      {/* Gradiente base crema y rosa pétalo */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(180deg, #182638 0%, #14352a 45%, #0f281f 100%)',
+            'linear-gradient(180deg, var(--rose-petal) 0%, var(--cream) 48%, var(--rose-baby) 100%)',
         }}
       />
 
-      {/* Rayos de luz suaves atravesando el bosque */}
+      {/* Velos de luz cálidos y rosados */}
       <div
-        className="absolute inset-0 opacity-40"
+        className="absolute inset-0 opacity-60"
         style={{
           background:
-            'radial-gradient(ellipse 60% 45% at 30% 0%, rgba(232,207,139,0.18), transparent 70%)',
+            'radial-gradient(ellipse 60% 45% at 30% 0%, rgba(234,218,245,0.55), transparent 70%)',
         }}
       />
 
@@ -73,7 +73,7 @@ export function EnchantedBackground() {
         className="absolute inset-0 opacity-70"
         style={{
           background:
-            'radial-gradient(ellipse 65% 50% at 80% 15%, rgba(246,197,213,0.32), transparent 72%)',
+            'radial-gradient(ellipse 65% 50% at 80% 15%, rgba(232,157,181,0.38), transparent 72%)',
         }}
       />
 
@@ -82,7 +82,7 @@ export function EnchantedBackground() {
         <div
           className="h-20 w-20 rounded-full"
           style={{
-            boxShadow: '14px 8px 0 0 #fff9ed, 0 0 60px 10px rgba(255,249,237,0.25)',
+            boxShadow: '14px 8px 0 0 var(--cream), 0 0 60px 10px rgba(255,248,244,0.4)',
             background: 'transparent',
           }}
         />
@@ -92,7 +92,7 @@ export function EnchantedBackground() {
       {stars.map((s) => (
         <motion.span
           key={s.id}
-          className="absolute rounded-full bg-ivory"
+          className="absolute rounded-full bg-rose-bordeaux"
           style={{
             left: `${s.left}%`,
             top: `${s.top}%`,
@@ -109,35 +109,35 @@ export function EnchantedBackground() {
         />
       ))}
 
-      {/* Niebla animada */}
+      {/* Niebla rosa animada */}
       <div
         className="absolute inset-x-0 bottom-0 h-1/2"
         style={{
           background:
-            'linear-gradient(0deg, rgba(156,175,136,0.16), transparent)',
+            'linear-gradient(0deg, rgba(214,122,161,0.14), transparent)',
           animation: 'drift 18s ease-in-out infinite',
         }}
       />
 
       {/* Siluetas de árboles (capas para profundidad) */}
       <TreeLine
-        className="absolute inset-x-0 bottom-0 h-[38vh] w-full text-[#0d2018]"
-        opacity={0.9}
+        className="absolute inset-x-0 bottom-0 h-[38vh] w-full text-rose-bordeaux"
+        opacity={0.1}
       />
       <TreeLine
-        className="absolute inset-x-0 bottom-0 h-[28vh] w-full text-[#0a1a13]"
-        opacity={0.85}
+        className="absolute inset-x-0 bottom-0 h-[28vh] w-full text-rose-dark"
+        opacity={0.08}
       />
 
       {/* Luciérnagas globales */}
       <FloatingFireflies count={14} />
 
-      {/* Viñeta para legibilidad */}
+      {/* Viñeta suave para conservar profundidad sin oscurecer el lienzo */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse at center, transparent 55%, rgba(15,40,31,0.55) 100%)',
+            'radial-gradient(ellipse at center, transparent 55%, rgba(214,122,161,0.12) 100%)',
         }}
       />
     </div>

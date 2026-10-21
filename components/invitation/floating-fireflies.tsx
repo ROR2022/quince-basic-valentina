@@ -13,8 +13,8 @@ interface FloatingFirefliesProps {
 }
 
 const TONES = [
-  { className: 'bg-gold-light', glow: 'rgba(232, 207, 139, 0.8)' },
-  { className: 'bg-quince-pink', glow: 'rgba(246, 197, 213, 0.85)' },
+  { className: 'bg-gold-soft', glow: 'rgba(212, 175, 122, 0.8)' },
+  { className: 'bg-rose-vintage', glow: 'rgba(232, 157, 181, 0.85)' },
 ] as const
 
 export function FloatingFireflies({

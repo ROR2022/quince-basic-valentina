@@ -3,7 +3,7 @@
 /**
  * BasicCountdown
  * Cuenta regresiva (días, horas, minutos, segundos) hasta la fecha del evento.
- * Tarjetas glassmorphism con acento de rosa pastel.
+ * Tarjetas rosa con superficies claras y acento mauve.
  */
 import { useEffect, useState } from 'react'
 import { invitationConfig } from '@/lib/config'
@@ -43,10 +43,10 @@ export function BasicCountdown() {
     <SectionReveal className="relative px-6 py-20">
       <FloatingBlossoms count={6} />
       <div className="mx-auto max-w-3xl text-center">
-        <h2 className="font-display text-2xl uppercase tracking-[0.2em] text-quince-rose sm:text-3xl">
+        <h2 className="font-display text-2xl uppercase tracking-[0.2em] text-rose-bordeaux sm:text-3xl">
           Cuenta regresiva
         </h2>
-        <p className="mt-3 font-serif text-lg text-champagne/90">
+        <p className="mt-3 font-serif text-lg text-rose-brown">
           Falta muy poco para una noche inolvidable
         </p>
 
@@ -54,13 +54,13 @@ export function BasicCountdown() {
           {(['days', 'hours', 'minutes', 'seconds'] as const).map((unit) => (
             <div
               key={unit}
-              className="rounded-2xl border border-quince-rose/40 bg-quince-pink/10 px-4 py-6 backdrop-blur-md"
-              style={{ boxShadow: 'inset 0 1px 0 rgba(255,249,237,0.08), 0 0 24px 2px rgba(246,197,213,0.15)' }}
+              className="rounded-2xl border border-rose-vintage/50 bg-rose-baby/80 px-4 py-6 shadow-lg backdrop-blur-md"
+              style={{ boxShadow: 'inset 0 1px 0 rgba(255,248,244,0.8), 0 0 24px 2px rgba(214,122,161,0.14)' }}
             >
-              <div className="font-display text-4xl text-ivory tabular-nums sm:text-5xl">
+              <div className="font-display text-4xl text-rose-ink tabular-nums sm:text-5xl">
                 {String(time[unit]).padStart(2, '0')}
               </div>
-              <div className="mt-2 text-xs uppercase tracking-[0.2em] text-quince-rose">
+              <div className="mt-2 text-xs uppercase tracking-[0.2em] text-rose-bordeaux">
                 {LABELS[unit]}
               </div>
             </div>

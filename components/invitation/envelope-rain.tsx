@@ -2,18 +2,18 @@
 
 /**
  * EnvelopeRain
- * Sobres decorativos que descienden suavemente. Sello en salvia o rosa pastel.
+ * Sobres decorativos que descienden suavemente. Sello en tonos rosa.
  */
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
-const SEAL_COLORS = ['#9caf88', '#dfa6b8']
+const SEAL_COLORS = ['#d67aa1', '#b95d82']
 
 function EnvelopeIcon({ size, sealColor }: { size: number; sealColor: string }) {
   return (
     <svg width={size} height={size * 0.7} viewBox="0 0 40 28" fill="none" aria-hidden="true">
-      <rect x="1" y="1" width="38" height="26" rx="2" fill="#fff9ed" stroke="#c89b3c" strokeWidth="1" />
-      <path d="M1 3 L20 16 L39 3" fill="none" stroke="#c89b3c" strokeWidth="1" />
+      <rect x="1" y="1" width="38" height="26" rx="2" fill="#fff8f4" stroke="#d4af7a" strokeWidth="1" />
+      <path d="M1 3 L20 16 L39 3" fill="none" stroke="#d4af7a" strokeWidth="1" />
       <circle cx="20" cy="17" r="3" fill={sealColor} />
     </svg>
   )

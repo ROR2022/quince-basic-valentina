@@ -3,7 +3,7 @@
 /**
  * MusicPlayer
  * Botón flotante circular (esquina inferior derecha) para reproducir/pausar
- * la música de fondo. Gira mientras suena y tiene brillo dorado.
+ * la música de fondo. Gira mientras suena y tiene brillo rosa.
  * El estado de reproducción se controla desde la página (audio compartido).
  */
 import { motion } from 'framer-motion'
@@ -24,8 +24,8 @@ export function MusicPlayer({ isPlaying, onToggle }: MusicPlayerProps) {
         aria-pressed={isPlaying}
         whileTap={{ scale: 0.9 }}
         whileHover={{ scale: 1.06 }}
-        className="flex h-14 w-14 items-center justify-center rounded-full border border-gold/60 bg-forest/80 text-gold-light backdrop-blur-md"
-        style={{ boxShadow: '0 0 20px 4px rgba(200,155,60,0.4)' }}
+        className="flex h-14 w-14 items-center justify-center rounded-full border border-rose-dark/50 bg-rose-baby/95 text-rose-dark shadow-lg backdrop-blur-md"
+        style={{ boxShadow: '0 0 20px 4px rgba(168,78,114,0.22)' }}
       >
         <motion.span
           animate={isPlaying ? { rotate: 360 } : { rotate: 0 }}
@@ -39,7 +39,7 @@ export function MusicPlayer({ isPlaying, onToggle }: MusicPlayerProps) {
           {isPlaying ? <Pause className="h-6 w-6" /> : <Music className="h-6 w-6" />}
         </motion.span>
       </motion.button>
-      <span className="rounded-full bg-forest/70 px-2 py-0.5 text-[10px] font-medium uppercase tracking-widest text-champagne backdrop-blur">
+      <span className="rounded-full bg-rose-baby/95 px-2 py-0.5 text-[10px] font-medium uppercase tracking-widest text-rose-bordeaux shadow backdrop-blur">
         Música
       </span>
     </div>

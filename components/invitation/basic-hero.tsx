@@ -3,7 +3,7 @@
 /**
  * BasicHero
  * Portada a pantalla completa: nombre, "Mis XV años", fotografía enmarcada
- * con ramas y flores, resplandor rosa SOLO alrededor de la quinceañera,
+ * con ramas y flores, resplandor rosa alrededor de la quinceañera,
  * fecha y frase configurable. Incluye respiración y parallax ligero.
  */
 import { motion, useScroll, useTransform } from 'framer-motion'
@@ -48,10 +48,10 @@ export function BasicHero() {
         transition={{ duration: 1, delay: 0.2 }}
         className="z-10 flex flex-col items-center text-center"
       >
-        <span className="font-display text-sm uppercase tracking-[0.4em] text-champagne">
+        <span className="font-display text-sm uppercase tracking-[0.4em] text-rose-bordeaux">
           Mis XV Años
         </span>
-        <div className="my-3 h-px w-24 bg-gold/60" />
+        <div className="my-3 h-px w-24 bg-gold-soft/70" />
       </motion.div>
 
       {/* Fotografía enmarcada con resplandor rosa exclusivo */}
@@ -65,7 +65,7 @@ export function BasicHero() {
         {/* Marco de ramas */}
         <svg
           viewBox="0 0 320 400"
-          className="pointer-events-none absolute -inset-6 z-20 text-gold/70"
+          className="pointer-events-none absolute -inset-6 z-20 text-gold-soft"
           aria-hidden="true"
         >
           <path
@@ -79,7 +79,7 @@ export function BasicHero() {
 
         {/* Resplandor rosa SOLO alrededor de la quinceañera */}
         <motion.div
-          className="relative h-72 w-56 overflow-hidden rounded-[45%_45%_45%_45%/40%_40%_60%_60%] border-2 border-quince-pink/70 quince-glow sm:h-96 sm:w-72"
+          className="relative h-72 w-56 overflow-hidden rounded-[45%_45%_45%_45%/40%_40%_60%_60%] border-2 border-rose-blush quince-glow sm:h-96 sm:w-72"
           animate={{ scale: [1, 1.02, 1] }}
           transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: 'easeInOut' }}
         >
@@ -106,16 +106,16 @@ export function BasicHero() {
           {quinceanera.name}
         </h1>
 
-        <p className="mt-6 max-w-lg text-pretty font-serif text-lg leading-relaxed text-champagne/90 sm:text-xl">
+        <p className="mt-6 max-w-lg text-pretty font-serif text-lg leading-relaxed text-rose-bordeaux sm:text-xl">
           {quinceanera.phrase}
         </p>
 
-        <div className="mt-8 flex items-center gap-3 text-gold-light">
-          <span className="h-px w-8 bg-gold/50" />
+        <div className="mt-8 flex items-center gap-3 text-rose-bordeaux">
+          <span className="h-px w-8 bg-gold-soft/70" />
           <span className="font-display text-sm uppercase tracking-[0.25em]">
             {formatLongDate(event.date)}
           </span>
-          <span className="h-px w-8 bg-gold/50" />
+          <span className="h-px w-8 bg-gold-soft/70" />
         </div>
       </motion.div>
     </section>

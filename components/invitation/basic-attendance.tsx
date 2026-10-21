@@ -4,7 +4,7 @@
  * BasicAttendance
  * Formulario RSVP con validación básica. Al enviar arma un mensaje con los
  * datos y abre WhatsApp (contact.whatsapp en config.ts) para que el invitado
- * lo envíe; luego lanza confeti dorado/lavanda/verde/marfil (sin rosa) y
+ * lo envíe; luego lanza confeti rosa/lavanda/champagne y
  * muestra mensaje de agradecimiento.
  */
 import confetti from 'canvas-confetti'
@@ -44,9 +44,9 @@ function sendRSVPByWhatsApp(data: RSVPData): void {
   window.open(`https://wa.me/${number1}?text=${text}`, '_blank')
 }
 
-// Confeti dorado, lavanda, verde, marfil y un acento de rosa pastel.
+// Confeti rosa y lavanda con un acento champagne discreto.
 function launchConfetti() {
-  const colors = ['#e8cf8b', '#c89b3c', '#c8b9db', '#9caf88', '#fff9ed', '#f6c5d5']
+  const colors = ['#a84e72', '#e89db5', '#d7c3e8', '#eadaf5', '#d4af7a', '#f8d7e4']
   confetti({ particleCount: 90, spread: 70, origin: { y: 0.6 }, colors })
   setTimeout(
     () => confetti({ particleCount: 60, angle: 60, spread: 55, origin: { x: 0 }, colors }),
@@ -59,7 +59,7 @@ function launchConfetti() {
 }
 
 const inputClass =
-  'w-full rounded-xl border border-input bg-forest/40 px-4 py-3 text-ivory placeholder:text-champagne/40 outline-none backdrop-blur-sm transition-colors focus:border-gold/70'
+  'w-full rounded-xl border border-input bg-cream/80 px-4 py-3 text-rose-ink placeholder:text-grape-gray outline-none backdrop-blur-sm transition-colors focus:border-rose-dark focus:ring-2 focus:ring-rose-dark/20'
 
 export function BasicAttendance() {
   const { event, quinceanera } = invitationConfig
@@ -112,14 +112,14 @@ export function BasicAttendance() {
     <SectionReveal className="relative px-6 py-20">
       <MagicalButterflies count={3} />
       <div className="mx-auto max-w-lg">
-        <h2 className="text-center font-display text-2xl uppercase tracking-[0.2em] text-quince-rose sm:text-3xl">
+        <h2 className="text-center font-display text-2xl uppercase tracking-[0.2em] text-rose-bordeaux sm:text-3xl">
           Confirma tu asistencia
         </h2>
-        <p className="mt-3 text-center font-serif text-lg text-champagne/90">
+        <p className="mt-3 text-center font-serif text-lg text-rose-brown">
           Fecha límite para confirmar: {deadline}
         </p>
 
-        <div className="relative mt-10 overflow-hidden rounded-2xl border border-quince-rose/40 bg-quince-pink/5 p-6 backdrop-blur-md sm:p-8">
+        <div className="relative mt-10 overflow-hidden rounded-2xl border border-rose-vintage/50 bg-rose-baby/80 p-6 shadow-md backdrop-blur-md sm:p-8">
           <AnimatePresence mode="wait">
             {done ? (
               <motion.div
@@ -129,16 +129,16 @@ export function BasicAttendance() {
                 className="relative flex flex-col items-center py-8 text-center"
               >
                 <MagicalButterflies count={4} />
-                <CheckCircle2 className="h-14 w-14 text-sage" aria-hidden="true" />
-                <p className="mt-4 font-script text-4xl text-gold-light">
+                <CheckCircle2 className="h-14 w-14 text-rose-dark" aria-hidden="true" />
+                <p className="mt-4 font-script text-4xl text-rose-dark">
                   ¡Gracias!
                 </p>
-                <p className="mt-2 font-serif text-lg text-champagne/90">
+                <p className="mt-2 font-serif text-lg text-rose-brown">
                   {form.attending === 'yes'
                     ? `Nos encantará celebrar contigo, ${form.name.split(' ')[0]}.`
                     : 'Gracias por avisarnos. Te extrañaremos.'}
                 </p>
-                <p className="mt-2 text-sm text-quince-rose">
+                <p className="mt-2 text-sm text-rose-bordeaux">
                   Se abrió WhatsApp con tu confirmación: solo falta que la envíes.
                 </p>
               </motion.div>
@@ -152,7 +152,7 @@ export function BasicAttendance() {
                 noValidate
               >
                 <div>
-                  <label htmlFor="rsvp-name" className="mb-1 block text-sm text-quince-rose">
+                  <label htmlFor="rsvp-name" className="mb-1 block text-sm text-rose-bordeaux">
                     Nombre completo
                   </label>
                   <input
@@ -166,7 +166,7 @@ export function BasicAttendance() {
                 </div>
 
                 <fieldset>
-                  <legend className="mb-2 text-sm text-quince-rose">¿Podrás asistir?</legend>
+                  <legend className="mb-2 text-sm text-rose-bordeaux">¿Podrás asistir?</legend>
                   <div className="grid grid-cols-2 gap-3" role="radiogroup" aria-label="¿Podrás asistir?">
                     {[
                       { value: 'yes', label: 'Sí, asistiré' },
@@ -186,8 +186,8 @@ export function BasicAttendance() {
                         }
                         className={`rounded-xl border px-4 py-3 text-sm font-medium transition-colors ${
                           form.attending === opt.value
-                            ? 'border-gold bg-gold/20 text-gold-light'
-                            : 'border-input bg-forest/40 text-champagne/80 hover:border-gold/50'
+                            ? 'border-rose-dark bg-rose-blush/50 text-rose-ink'
+                            : 'border-input bg-cream/80 text-rose-bordeaux hover:border-rose-dark/60'
                         }`}
                       >
                         {opt.label}
@@ -198,7 +198,7 @@ export function BasicAttendance() {
 
                 {form.attending === 'yes' && (
                   <div>
-                    <label htmlFor="rsvp-guests" className="mb-1 block text-sm text-quince-rose">
+                    <label htmlFor="rsvp-guests" className="mb-1 block text-sm text-rose-bordeaux">
                       Número de acompañantes
                     </label>
                     <input
@@ -219,7 +219,7 @@ export function BasicAttendance() {
                 )}
 
                 <div>
-                  <label htmlFor="rsvp-phone" className="mb-1 block text-sm text-quince-rose">
+                  <label htmlFor="rsvp-phone" className="mb-1 block text-sm text-rose-bordeaux">
                     Teléfono (opcional)
                   </label>
                   <input
@@ -233,7 +233,7 @@ export function BasicAttendance() {
                 </div>
 
                 <div className="hidden">
-                  <label htmlFor="rsvp-dietary" className="mb-1 block text-sm text-quince-rose">
+                  <label htmlFor="rsvp-dietary" className="mb-1 block text-sm text-rose-bordeaux">
                     Restricciones alimenticias (opcional)
                   </label>
                   <input
@@ -247,7 +247,7 @@ export function BasicAttendance() {
                 </div>
 
                 <div>
-                  <label htmlFor="rsvp-message" className="mb-1 block text-sm text-quince-rose">
+                  <label htmlFor="rsvp-message" className="mb-1 block text-sm text-rose-bordeaux">
                     Mensaje para {quinceanera.shortName} (opcional)
                   </label>
                   <textarea
@@ -269,7 +269,7 @@ export function BasicAttendance() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-quince-rose px-6 py-3 font-display text-sm uppercase tracking-[0.15em] text-forest-deep transition-transform hover:scale-[1.02] disabled:opacity-60"
+                  className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-rose-dark px-6 py-3 font-display text-sm uppercase tracking-[0.15em] text-cream transition-transform hover:scale-[1.02] hover:bg-rose-bordeaux disabled:opacity-60"
                 >
                   <Sparkles className="h-4 w-4" aria-hidden="true" />
                   {submitting ? 'Enviando...' : 'Confirmar asistencia'}
