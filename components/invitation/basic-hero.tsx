@@ -102,7 +102,7 @@ export function BasicHero() {
         transition={{ duration: 1, delay: 0.9 }}
         className="z-10 flex flex-col items-center text-center"
       >
-        <h1 className="name-shimmer font-script text-6xl leading-[1.3] sm:text-8xl">
+        <h1 className="name-shimmer font-script text-7xl leading-[1.2] sm:text-9xl">
           {quinceanera.name}
         </h1>
 

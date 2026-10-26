@@ -1,75 +1,63 @@
-'use client'
+import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
+import {
+  InvitationExperience,
+  type GuestInvitation,
+} from '@/components/invitation/invitation-experience'
 
-/**
- * Invitación web interactiva de XV años · Bosque encantado.
- * Ensambla todas las secciones y controla la música compartida.
- */
-import { useRef, useState } from 'react'
-import { BasicAttendance } from '@/components/invitation/basic-attendance'
-import { BasicCountdown } from '@/components/invitation/basic-countdown'
-import { BasicCTA } from '@/components/invitation/basic-cta'
-import { BasicEventDetails } from '@/components/invitation/basic-event-details'
-import { BasicGiftOptions } from '@/components/invitation/basic-gift-options'
-import { BasicHero } from '@/components/invitation/basic-hero'
-import { DressCode } from '@/components/invitation/dress-code'
-import { EnchantedBackground } from '@/components/invitation/enchanted-background'
-import { EntryPortal } from '@/components/invitation/entry-portal'
-import { Footer } from '@/components/invitation/footer'
-import { MusicPlayer } from '@/components/invitation/music-player'
-import { PremiumInvitation } from '@/components/invitation/premium-invitation'
+interface PageProps {
+  searchParams: Promise<{ id?: string | string[] }>
+}
 
-export default function Page() {
-  const [entered, setEntered] = useState(false)
-  const [isPlaying, setIsPlaying] = useState(false)
-  const audioRef = useRef<HTMLAudioElement>(null)
+function parseCsvRow(line: string) {
+  const fields: string[] = []
+  let field = ''
+  let insideQuotes = false
 
-  // Al entrar al bosque: revelar contenido + activar música
-  function handleEnter() {
-    setEntered(true)
-    const audio = audioRef.current
-    if (audio) {
-      audio.volume = 0.5 // Volumen inicial moderado
-      audio
-        .play()
-        .then(() => setIsPlaying(true))
-        .catch(() => setIsPlaying(false)) // Si no hay archivo, falla en silencio
-    }
-  }
-
-  function toggleMusic() {
-    const audio = audioRef.current
-    if (!audio) return
-    if (isPlaying) {
-      audio.pause()
-      setIsPlaying(false)
+  for (let index = 0; index < line.length; index += 1) {
+    const character = line[index]
+    if (character === '"') {
+      if (insideQuotes && line[index + 1] === '"') {
+        field += '"'
+        index += 1
+      } else {
+        insideQuotes = !insideQuotes
+      }
+    } else if (character === ',' && !insideQuotes) {
+      fields.push(field)
+      field = ''
     } else {
-      audio
-        .play()
-        .then(() => setIsPlaying(true))
-        .catch(() => setIsPlaying(false))
+      field += character
     }
   }
 
-  return (
-    <main className="relative min-h-svh">
-      <EnchantedBackground />
+  fields.push(field)
+  return fields
+}
 
-      {/* Audio de fondo (placeholder /music.mp3) */}
-      <audio ref={audioRef} src="/music.mp3" loop preload="none" />
+async function findGuest(id: string | undefined): Promise<GuestInvitation | null> {
+  if (!id || !/^[A-Za-z0-9]{16}$/.test(id)) return null
 
-      <EntryPortal visible={!entered} onEnter={handleEnter} />
-
-      {entered && <MusicPlayer isPlaying={isPlaying} onToggle={toggleMusic} />}
-
-      <BasicHero />
-      <BasicCountdown />
-      <PremiumInvitation />
-      <BasicEventDetails />
-      <DressCode />
-      <BasicAttendance />
-      <BasicGiftOptions />
-      <BasicCTA />
-      <Footer />
-    </main>
+  const csv = await readFile(
+    join(process.cwd(), 'data', 'invitados-unificados.csv'),
+    'utf8',
   )
+  const rows = csv.split(/\r?\n/).filter(Boolean).slice(1)
+
+  for (const row of rows) {
+    const [guestId, name, quantity] = parseCsvRow(row)
+    if (guestId === id && name && quantity) {
+      return { name, quantity }
+    }
+  }
+
+  return null
+}
+
+export default async function Page({ searchParams }: PageProps) {
+  const { id } = await searchParams
+  const guestId = Array.isArray(id) ? id[0] : id
+  const guest = await findGuest(guestId)
+
+  return <InvitationExperience guest={guest} />
 }

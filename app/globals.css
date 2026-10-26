@@ -163,8 +163,10 @@
   background: linear-gradient(
     100deg,
     var(--rose-bordeaux) 0%,
-    var(--rose-dark) 35%,
-    var(--rose-bordeaux) 65%,
+    var(--rose-dark) 28%,
+    var(--rose-bordeaux) 46%,
+    var(--rose-dark) 55%,
+    var(--rose-bordeaux) 72%,
     var(--rose-ink) 100%
   );
   background-size: 200% auto;
@@ -172,6 +174,12 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shimmer 6s linear infinite;
+  filter: drop-shadow(0 3px 5px rgba(122, 60, 82, 0.22))
+    drop-shadow(0 0 14px rgba(214, 122, 161, 0.2));
+}
+
+.guest-name {
+  text-shadow: 0 2px 0 rgba(255, 248, 244, 0.9), 0 5px 16px rgba(122, 60, 82, 0.2);
 }
 
 @keyframes shimmer {
