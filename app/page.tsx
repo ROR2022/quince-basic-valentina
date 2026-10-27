@@ -35,8 +35,14 @@ function parseCsvRow(line: string) {
   return fields
 }
 
+const defaultGuest: GuestInvitation = {
+  name: 'Invitado',
+  quantity: '1 persona',
+  companionLimit: 0,
+}
+
 async function findGuest(id: string | undefined): Promise<GuestInvitation | null> {
-  if (!id || !/^[A-Za-z0-9]{16}$/.test(id)) return null
+  if (!id || !/^[A-Za-z0-9]{16}$/.test(id)) return defaultGuest
 
   const csv = await readFile(
     join(process.cwd(), 'data', 'invitados-unificados.csv'),
@@ -55,7 +61,7 @@ async function findGuest(id: string | undefined): Promise<GuestInvitation | null
     }
   }
 
-  return null
+  return defaultGuest
 }
 
 export default async function Page({ searchParams }: PageProps) {
