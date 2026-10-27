@@ -60,7 +60,7 @@ export const invitationConfig = {
     quoteMessage:
       'Hola, me interesa contratar una invitación digital para mi evento.',
   },
-  confirmationWhatsappNumber: '5217777937484', // Número de WhatsApp para confirmaciones (solo dígitos)
+  confirmationWhatsappNumber: '5219371234159', // Número de WhatsApp para confirmaciones (solo dígitos) +52 1 937 123 4159
   familyMessage:
     'Gracias por ser parte de esta historia encantada. Con cariño, Valentina y familia.',
 } as const

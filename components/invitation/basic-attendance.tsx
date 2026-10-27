@@ -24,6 +24,10 @@ interface RSVPData {
   dietary: string
 }
 
+interface BasicAttendanceProps {
+  companionLimit: number
+}
+
 function buildRSVPMessage(data: RSVPData): string {
   const lines = [
     `Confirmación de asistencia - ${invitationConfig.quinceanera.name}`,
@@ -61,7 +65,7 @@ function launchConfetti() {
 const inputClass =
   'w-full rounded-xl border border-input bg-cream/80 px-4 py-3 text-rose-ink placeholder:text-grape-gray outline-none backdrop-blur-sm transition-colors focus:border-rose-dark focus:ring-2 focus:ring-rose-dark/20'
 
-export function BasicAttendance() {
+export function BasicAttendance({ companionLimit }: BasicAttendanceProps) {
   const { event, quinceanera } = invitationConfig
   const deadline = new Date(event.rsvpDeadline).toLocaleDateString('es-MX', {
     day: 'numeric',
@@ -93,6 +97,10 @@ export function BasicAttendance() {
     }
     if (!form.attending) {
       setError('Indica si podrás asistir.')
+      return
+    }
+    if (form.attending === 'yes' && form.guests > companionLimit) {
+      setError(`Esta invitación permite hasta ${companionLimit} acompañantes.`)
       return
     }
 
@@ -196,27 +204,39 @@ export function BasicAttendance() {
                   </div>
                 </fieldset>
 
-                {form.attending === 'yes' && (
-                  <div>
-                    <label htmlFor="rsvp-guests" className="mb-1 block text-sm text-rose-bordeaux">
-                      Número de acompañantes
-                    </label>
-                    <input
-                      id="rsvp-guests"
-                      type="number"
-                      min={0}
-                      max={10}
-                      className={inputClass}
-                      value={form.guests}
-                      onChange={(e) =>
-                        setForm({
-                          ...form,
-                          guests: Math.min(10, Math.max(0, Number(e.target.value) || 0)),
-                        })
-                      }
-                    />
-                  </div>
-                )}
+                {form.attending === 'yes' &&
+                  (companionLimit > 0 ? (
+                    <div>
+                      <label htmlFor="rsvp-guests" className="mb-1 block text-sm text-rose-bordeaux">
+                        Número de acompañantes (máximo {companionLimit})
+                      </label>
+                      <input
+                        id="rsvp-guests"
+                        type="number"
+                        min={0}
+                        max={companionLimit}
+                        step={1}
+                        className={inputClass}
+                        value={form.guests}
+                        onChange={(e) =>
+                          setForm({
+                            ...form,
+                            guests: Math.min(
+                              companionLimit,
+                              Math.max(
+                                0,
+                                Math.trunc(Number(e.target.value) || 0),
+                              ),
+                            ),
+                          })
+                        }
+                      />
+                    </div>
+                  ) : (
+                    <p className="text-sm text-rose-bordeaux">
+                      Esta invitación no incluye pases adicionales.
+                    </p>
+                  ))}
 
                 <div>
                   <label htmlFor="rsvp-phone" className="mb-1 block text-sm text-rose-bordeaux">

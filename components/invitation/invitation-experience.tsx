@@ -22,6 +22,7 @@ import { PunctualityNotice } from '@/components/invitation/punctuality-notice'
 export interface GuestInvitation {
   name: string
   quantity: string
+  companionLimit: number
 }
 
 interface InvitationExperienceProps {
@@ -79,7 +80,7 @@ export function InvitationExperience({ guest }: InvitationExperienceProps) {
       <BasicEventDetails />
       <PunctualityNotice />
       <DressCode />
-      <BasicAttendance />
+      <BasicAttendance companionLimit={guest?.companionLimit ?? 1} />
       <BasicGiftOptions />
       <BasicCTA />
       <Footer />
