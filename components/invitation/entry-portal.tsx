@@ -12,7 +12,11 @@ import { FloatingFireflies } from './floating-fireflies'
 interface EntryPortalProps {
   visible: boolean
   onEnter: () => void
-  guest: { name: string; quantity: string } | null
+  guest: {
+    name: string
+    quantity: string
+    companionLimit: number | null
+  } | null
 }
 
 export function EntryPortal({ visible, onEnter, guest }: EntryPortalProps) {
@@ -96,9 +100,11 @@ export function EntryPortal({ visible, onEnter, guest }: EntryPortalProps) {
                   {guest.name}
                 </p>
                 <span className="mt-3 inline-flex rounded-full border border-rose-vintage/50 bg-rose-blush/30 px-4 py-1 text-sm font-medium text-rose-bordeaux">
-                  {guest.quantity === 'personal'
-                    ? 'Pase personal'
-                    : `Pase para ${guest.quantity}`}
+                  {guest.companionLimit === null
+                    ? 'Cantidad de asistentes por confirmar'
+                    : guest.quantity === 'personal'
+                      ? 'Pase personal'
+                      : `Pase para ${guest.quantity}`}
                 </span>
               </div>
             )}

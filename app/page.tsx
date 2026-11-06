@@ -53,6 +53,10 @@ async function findGuest(id: string | undefined): Promise<GuestInvitation | null
   for (const row of rows) {
     const [guestId, name, quantity] = parseCsvRow(row)
     if (guestId === id && name && quantity) {
+      if (quantity.trim().toLowerCase() === 'ilimitado') {
+        return { name, quantity, companionLimit: null }
+      }
+
       const assignedPasses = quantity.match(/^\s*(\d+)\s+personas?\s*$/i)
       const companionLimit = assignedPasses
         ? Math.max(0, Number(assignedPasses[1]) - 1)

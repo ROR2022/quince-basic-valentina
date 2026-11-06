@@ -19,22 +19,35 @@ interface RSVPData {
   name: string
   attending: 'yes' | 'no' | ''
   guests: number
+  totalAttendees: number
   phone: string
   message: string
   dietary: string
 }
 
 interface BasicAttendanceProps {
-  companionLimit: number
+  companionLimit: number | null
+  invitationLabel?: string
 }
 
-function buildRSVPMessage(data: RSVPData): string {
+function buildRSVPMessage(
+  data: RSVPData,
+  invitationLabel: string | undefined,
+  isUnlimited: boolean,
+): string {
   const lines = [
     `Confirmación de asistencia - ${invitationConfig.quinceanera.name}`,
+    ...(invitationLabel ? [`Invitación: ${invitationLabel}`] : []),
     `Nombre: ${data.name}`,
     `Asistencia: ${data.attending === 'yes' ? 'Sí, asistiré' : 'No podré asistir'}`,
   ]
-  if (data.attending === 'yes') lines.push(`Acompañantes: ${data.guests}`)
+  if (data.attending === 'yes') {
+    lines.push(
+      isUnlimited
+        ? `Total de asistentes (incluida la persona que confirma): ${data.totalAttendees}`
+        : `Acompañantes: ${data.guests}`,
+    )
+  }
   if (data.phone) lines.push(`Teléfono: ${data.phone}`)
   if (data.dietary) lines.push(`Restricciones alimenticias: ${data.dietary}`)
   if (data.message) lines.push(`Mensaje: ${data.message}`)
@@ -42,9 +55,15 @@ function buildRSVPMessage(data: RSVPData): string {
 }
 
 // Abre WhatsApp con el RSVP prellenado. El invitado debe presionar "Enviar" en la app.
-function sendRSVPByWhatsApp(data: RSVPData): void {
+function sendRSVPByWhatsApp(
+  data: RSVPData,
+  invitationLabel: string | undefined,
+  isUnlimited: boolean,
+): void {
   const number1 = invitationConfig.confirmationWhatsappNumber;
-  const text = encodeURIComponent(buildRSVPMessage(data))
+  const text = encodeURIComponent(
+    buildRSVPMessage(data, invitationLabel, isUnlimited),
+  )
   window.open(`https://wa.me/${number1}?text=${text}`, '_blank')
 }
 
@@ -65,7 +84,10 @@ function launchConfetti() {
 const inputClass =
   'w-full rounded-xl border border-input bg-cream/80 px-4 py-3 text-rose-ink placeholder:text-grape-gray outline-none backdrop-blur-sm transition-colors focus:border-rose-dark focus:ring-2 focus:ring-rose-dark/20'
 
-export function BasicAttendance({ companionLimit }: BasicAttendanceProps) {
+export function BasicAttendance({
+  companionLimit,
+  invitationLabel,
+}: BasicAttendanceProps) {
   const { event, quinceanera } = invitationConfig
   const deadline = new Date(event.rsvpDeadline).toLocaleDateString('es-MX', {
     day: 'numeric',
@@ -78,6 +100,7 @@ export function BasicAttendance({ companionLimit }: BasicAttendanceProps) {
     name: '',
     attending: '',
     guests: 0,
+    totalAttendees: 1,
     phone: '',
     message: '',
     dietary: '',
@@ -99,14 +122,26 @@ export function BasicAttendance({ companionLimit }: BasicAttendanceProps) {
       setError('Indica si podrás asistir.')
       return
     }
-    if (form.attending === 'yes' && form.guests > companionLimit) {
+    if (
+      form.attending === 'yes' &&
+      companionLimit === null &&
+      (!Number.isSafeInteger(form.totalAttendees) || form.totalAttendees < 1)
+    ) {
+      setError('Indica un total válido de asistentes (número entero, mínimo 1).')
+      return
+    }
+    if (
+      form.attending === 'yes' &&
+      companionLimit !== null &&
+      form.guests > companionLimit
+    ) {
       setError(`Esta invitación permite hasta ${companionLimit} acompañantes.`)
       return
     }
 
     setSubmitting(true)
     try {
-      sendRSVPByWhatsApp(form)
+      sendRSVPByWhatsApp(form, invitationLabel, companionLimit === null)
       setDone(true)
       if (form.attending === 'yes') launchConfetti()
     } catch {
@@ -205,7 +240,30 @@ export function BasicAttendance({ companionLimit }: BasicAttendanceProps) {
                 </fieldset>
 
                 {form.attending === 'yes' &&
-                  (companionLimit > 0 ? (
+                  (companionLimit === null ? (
+                    <div>
+                      <label htmlFor="rsvp-total-attendees" className="mb-1 block text-sm text-rose-bordeaux">
+                        Número total de asistentes (incluyéndote, sin límite preasignado)
+                      </label>
+                      <input
+                        id="rsvp-total-attendees"
+                        type="number"
+                        min={1}
+                        step={1}
+                        className={inputClass}
+                        value={form.totalAttendees}
+                        onChange={(e) =>
+                          setForm({
+                            ...form,
+                            totalAttendees:
+                              e.currentTarget.value === ''
+                                ? 0
+                                : Number(e.currentTarget.value),
+                          })
+                        }
+                      />
+                    </div>
+                  ) : companionLimit > 0 ? (
                     <div>
                       <label htmlFor="rsvp-guests" className="mb-1 block text-sm text-rose-bordeaux">
                         Número de acompañantes (máximo {companionLimit})

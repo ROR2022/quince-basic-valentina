@@ -25,6 +25,7 @@ yarn-error.log*
 # private guest invitation links and source lists
 /lista04.txt
 /invitados-lista04-urls.txt
+/invitados-familia-url.txt
 
 # typescript
 *.tsbuildinfo
